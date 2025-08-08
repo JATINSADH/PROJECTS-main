@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- font awosome  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--  main css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    <!--  scroll reviel js -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <!--  typed js -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <title>Responsive Personal Portfolio Website Design | @jatin_sadh</title>
+
+
+</head>
+
+<body>
+    <!-- header design -->
+    <header class="header">
+        <a href="#" class="logo">Portfolio</a>
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+
+
+        <nav class="navbar">
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#badges">Badges</a>
+            <a href="#services">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contacts</a>
+            <a href="#contact" class="hire-me-nav-btn">Hire Me</a>
+        </nav>
+    </header>
+
+    <!-- Home section design -->
+    <section class="home" id="home">
+        <div class="home-content">
+            <h3><span class="intro-line-no"></span>
+            &lt; Hello<span class="intro-accent"></span>, &gt;</h3>
+            <h1>< I am Jatin Sadh! ></Jatin></h1>
+            <h3>< And I'm a <span class="multiple-text"></span></h3>
+            <p>I’m Jatin Sadh, a dedicated coder in Python, SQL, MongoDB and Machine Learning.
+                Here, you’ll find a collection of my projects, showcasing my ability to turn ideas into functional and
+                innovative solutions. Dive in to see my work and how I bring concepts to life through code.</p>
+            <div class="social-media">
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></i></a>
+                <a href="https://github.com/jatinsadh"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.instagram.com/jatinsadh79"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/jatinsadpatva"><i class="fa-brands fa-linkedin-in"></i></i></a>
+            </div>
+            <a href="{{ url_for('resume') }}" class="btn btn--download">Download Resume</a>
+        </div>
+
+        <div class="home-img">
+            <img src="../static/img/jatin1.png" alt="">
+        </div>
+    </section>
+
+
+    <!-- About section design -->
+    <section class="about" id="about">
+
+        <div class="about-content">
+            <h2 class="heading">About <span>Me</span></h2>
+            <h3>< <span class="about-multiple-text"></span></h3>
+            <p>Hi, I’m Jatin. I’m passionate about coding and technology. Over the years, I’ve developed skills
+                in Python, MongoDB, SQL and Machine Learning. My journey began with learning Python, which opened
+                the door to exploring various other technologies and tools.
+                I enjoy tackling complex problems and continuously expanding my knowledge. My projects reflect my
+                commitment to quality and my ability to adapt to new challenges. Whether it’s building a web application
+                or implementing machine learning algorithms, I strive to deliver efficient and effective solutions.
+                As a student, I manage my time between college and my passion for coding. This balance has taught me the
+                importance of discipline and time management, which I apply to all my projects.
+                Feel free to explore my portfolio and reach out if you’d like to collaborate or learn more about my
+                work. I’m always open to new opportunities and connections in the tech community.</p>
+            <a href="#badges" class="btn">Read more</a>
+        </div>
+    </section>
+
+    <hr class="section-separator">
+
+    <!-- bedge section-->
+    <section class="badges-section" id="badges">
+        <h2 class="heading badges-heading">My <span>Badges</span></h2>
+        <div class="badges-list">
+            <a href="https://www.hackerrank.com/profile/JATINSADH" target="_blank">
+                <img src="../static/img/python_bedge.png" alt="Python Badge">
+            </a>
+            <a href="https://www.hackerrank.com/profile/JATINSADH" target="_blank">
+                <img src="../static/img/sql_bedge.png" alt="Sql Badge">
+            </a>
+            <a href="https://www.credly.com/badges/5f617e5c-ab31-4d2a-9cd1-4a8eefa89fe3/public_url" target="_blank">
+                <img src="../static/img/aws_ML_bedge.png" alt="AWS ML Badge">
+            </a>
+            <a href="https://www.credly.com/badges/2d709808-7244-4359-a97e-af3698d51ca4/public_url" target="_blank">
+                <img src="../static/img/data_Science_bedge.png" alt="Data Science Badge">
+            </a>
+
+            <!-- Add more badges as needed -->
+        </div>
+    </section>
+
+
+    <!--  services section design -->
+    <section class="services" id="services">
+        <h2 class="headinng">My <span>Skills</span></h2>
+
+        <div class="services-container">
+            <div class="services-box">
+                <i class="fa-solid fa-code"></i>
+                <h3>Web Development</h3>
+                <p>
+                    Proficient in creating responsive and dynamic websites using HTML, CSS, and JavaScript.
+                </p>
+                <a href="#" class="btn">Read More</a>
+            </div>
+
+            <div class="services-box">
+                <i class="fa-solid fa-palette"></i>
+                <h3>UI/UX Designing</h3>
+                <p>
+                    Experienced in designing engaging and user-centric interfaces for web and mobile applications.
+                </p>
+                <a href="#" class="btn">Read More</a>
+            </div>
+
+            <div class="services-box">
+                <i class="fa-brands fa-android"></i>
+                <h3>App Development</h3>
+                <p>
+                    Skilled in building user-friendly mobile applications with intuitive interfaces.
+                </p>
+                <a href="#" class="btn">Read More</a>
+            </div>
+        </div>
+    </section>
+
+    <!--  project section design -->
+    <section class="projects" id="projects">
+        <h2 class="heading">Letest <span>Projects</span></h2>
+
+        <div class="projects-container">
+            <div class="projects-box">
+                <a href="{{ url_for('index1') }}" class="projects-box">
+                    <img src="../static/img/python.jpg" alt="python">
+                    <div class="projects-layer">
+                        <h4>Python</h4>
+                        <p>“Developed a Python-based application to automate data processing tasks, enhancing efficiency
+                            and accuracy.”</p>
+                        <i class="fa-solid fa-up-right-from-square"></i>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="projects-box">
+                <a href="{{ url_for('index2') }}" class="projects-box">
+                    <img src="../static/img/MachineLearning.jpg" alt="MachineLearning">
+                    <div class="projects-layer">
+                        <h4>Machine Learning</h4>
+                        <p>Implemented machine learning algorithms to predict outcomes and provide data-driven insights
+                            for decision-making.”</p>
+                        <i class="fa-solid fa-up-right-from-square"></i>
+                    </div>
+                </a>
+            </div>
+
+            <div class="projects-box">
+                <a href="{{ url_for('index1') }}" class="projects-box">
+                    <img src="../static/img/aws.jpg" alt="AWS">
+                    <div class="projects-layer">
+                        <h4>AWS Services</h4>
+                        <p>Leveraged AWS services to build scalable and secure cloud-based solutions, ensuring high
+                            availability and performance.”</p>
+                        <i class="fa-solid fa-up-right-from-square"></i>
+                    </div>
+                </a>
+            </div>
+
+            <div class="projects-box">
+                <img src="../static/img/4.jpg" alt="">
+                <div class="projects-layer">
+                    <h4>Comming Soon</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <i class="fa-solid fa-up-right-from-square"></i>
+                </div>
+            </div>
+
+            <div class="projects-box">
+                <img src="../static/img/5.jpg" alt="">
+                <div class="projects-layer">
+                    <h4>Comming Soon</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <i class="fa-solid fa-up-right-from-square"></i>
+                </div>
+            </div>
+
+            <div class="projects-box">
+                <img src="../static/img/6.jpg" alt="">
+                <div class="projects-layer">
+                    <h4>Comming Soon</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <i class="fa-solid fa-up-right-from-square"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--  contects section design -->
+    <section class="contact" id="contact">
+        <h2 class="heading">Contact <span>Me</span></h2>
+
+        <form action="/submit" method="POST">
+            <div class="input-box">
+                <input type="text" name="full_name" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+            </div>
+
+            <div class="input-box">
+                <input type="number" name="mobile_number" placeholder="Mobile Number" required>
+                <input type="text" name="email_subject" placeholder="Email Subject" required>
+            </div>
+            <textarea name="message" cols="30" rows="10" placeholder="Your Message" required></textarea>
+            <input type="submit" value="Send Message" class="btn">
+
+        </form>
+    </section>
+
+
+    <!--  footer section design -->
+    <footer class="footer">
+        <div class="footer-text">
+            <p>Copyright &copy; 2024 by @jatinsadh | All Rights Reserved.</p>
+        </div>
+
+        <div class="footer-iconTop">
+            <a href="#home"><i class="fa-solid fa-angle-up"></i></a>
+        </div>
+    </footer>
+
+
+    <!--  Main JS -->
+    <script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
+
+
+</body>
+
+</html>

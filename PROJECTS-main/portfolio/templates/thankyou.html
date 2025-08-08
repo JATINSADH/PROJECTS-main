@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thank You</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+</head>
+<body>
+    <section class="thankyou-section" style="text-align:center; padding:8rem 2rem;">
+        <h2>Thank you for contacting me, {{ name }}! Your message has been sent.</h2>
+        <a href="/" class="btn" style="margin-top:2rem;">Back to Home</a>
+    </section>
+</body>
+</html>

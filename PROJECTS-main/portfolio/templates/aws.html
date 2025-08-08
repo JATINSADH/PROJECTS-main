@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Instances Launch</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .finger {
+            font-size: 50px;
+            cursor: pointer;
+        }
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            font-size: 16px;
+            text-decoration: none;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Click the button</h1>
+    <h2>Show the fingers how much instance you want to launch in AWS</h2>
+    <div>
+        <span class="finger" onclick="selectInstances(1)">☝️</span>
+        <span class="finger" onclick="selectInstances(2)">✌️</span>
+        <span class="finger" onclick="selectInstances(3)">🤟</span>
+        <span class="finger" onclick="selectInstances(4)">🖖</span>
+        <span class="finger" onclick="selectInstances(5)">🖐️</span>
+    </div>
+    <form action="{{ url_for('aws') }}" method="post">
+        <input type="hidden" name="instances" id="instances">
+        <button type="submit" class="button">Launch Instances</button>
+    </form>
+    <a href="{{ url_for('index3') }}" class="back-link">Go Back</a>
+    <script>
+        function selectInstances(number) {
+            document.getElementById('instances').value = number;
+        }
+    </script>
+</body>
+</html>

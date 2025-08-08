@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Automation Tasks</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #444;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        a {
+            display: block;
+            width: 200px;
+            padding: 15px;
+            background-color: #3498db;
+            /* 3498db */
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+        a:hover {
+            background-color: #2980b9;
+            /* 2980b9 */
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #ffff;
+            text-decoration: none;
+            /* 3498db */
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Python Automation Task Dashboard</h1>
+    <div class="container">
+        <a class="link" href="{{ url_for('send_email_page') }}">Send Email</a>
+        <!-- <a href="send_email.html">Send Email</a> -->
+        <a href="{{ url_for('send_sms') }}">Send SMS</a>
+
+        <a href="{{ url_for('scrape_google_page') }}">Scrape Google Search</a>
+
+        <a href="{{ url_for('find_geo_location') }}">Find Geo Location</a>
+
+        <a href="{{ url_for('text_to_speech') }}">Text to Audio</a>
+
+        <a href="{{ url_for('control_volume') }}">Control Laptop Volume</a>
+
+        <a href="{{ url_for('send_sms_from_mobile') }}">Send SMS from Mobile</a>
+
+        <a href="{{ url_for('send_bulk_email') }}">Send Bulk Email</a>
+
+        <a href="{{ url_for('index') }}">Back To Home</a>
+    </div>
+</body>
+</html>

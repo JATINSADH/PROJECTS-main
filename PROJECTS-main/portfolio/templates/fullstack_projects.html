@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Stack</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #4a4e69;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        .task {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .task img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+        }
+
+        .task button {
+            background-color: #4a4e69;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        .task button:hover {
+            background-color: #22223b;
+        }
+
+        .task:hover {
+            transform: translateY(-5px);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+
+        /* Section Styles */
+        #cameraVideo, #recordVideo, #liveVideo {
+            display: block;
+            margin: 0 auto;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+
+        canvas {
+            display: block;
+            margin: 0 auto;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+
+        #results {
+            margin-top: 10px;
+        }
+
+        #results a {
+            color: #4a4e69;
+            text-decoration: none;
+        }
+
+        #results a:hover {
+            text-decoration: underline;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: calc(100% - 22px);
+        }
+
+        button {
+            background-color: #4a4e69;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        button:hover {
+            background-color: #22223b;
+        }
+    </style>
+</head>
+<body>
+    <h1>Full-Stack Projects</h1>
+    <div class="container">
+        <div class="task">
+            <img src="{{ url_for('static', filename='img/task.png') }}" alt="Speech to Text">
+            
+            <button onclick="showSection('speechToText')">Speech to Text</button>
+        </div>
+        <div class="task">
+            <img src="{{ url_for('static', filename='img/task.png') }}" alt="Camera Photo Capture">
+            <button onclick="showSection('cameraPhoto')">Camera Photo Capture</button>
+        </div>
+        <div class="task">
+            <img src="{{ url_for('static', filename='img/task.png') }}" alt="Live Camera Stream">
+            <button onclick="showSection('liveCamera')">Live Camera Stream</button>
+        </div>
+        <div class="task">
+            <img src="{{ url_for('static', filename='img/task.png') }}" alt="Record Video">
+            <button onclick="showSection('videoRecord')">Record Video</button>
+        </div>
+        <div class="task">
+            <img src="{{ url_for('static', filename='img/task.png') }}" alt="Search Engine">
+            <button onclick="showSection('searchEngine')">Search Engine</button>
+        </div>
+        <div class="task">
+            <img src="{{ url_for('static', filename='img/task.png') }}" alt="ChatGPT with Voice Input">
+            <button onclick="showSection('chatGPT')">ChatGPT with Voice Input</button>
+        </div>
+    </div>
+
+    <!-- Sections -->
+    <div id="speechToText" class="hidden">
+        <h2>Speech to Text</h2>
+        <button onclick="startListening()">Start Listening</button>
+        <p id="result"></p>
+    </div>
+
+    <div id="cameraPhoto" class="hidden">
+        <h2>Camera Photo Capture</h2>
+        <video id="cameraVideo" width="640" height="480" autoplay></video>
+        <br>
+        <button id="snap">Capture Photo</button>
+        <br>
+        <canvas id="canvas" width="640" height="480"></canvas>
+    </div>
+
+    <div id="liveCamera" class="hidden">
+        <h2>Live Camera Stream</h2>
+        <video id="liveVideo" width="640" height="480" autoplay></video>
+    </div>
+
+    <div id="videoRecord" class="hidden">
+        <h2>Record Video</h2>
+        <video id="recordVideo" width="640" height="480" autoplay></video>
+        <button id="start">Start Recording</button>
+        <button id="stop">Stop Recording</button>
+        <br><br>
+        <video id="playback" width="640" height="480" controls></video>
+    </div>
+
+    <div id="searchEngine" class="hidden">
+        <h2>Simple Search Engine</h2>
+        <input type="text" id="searchQuery" placeholder="Enter name to search">
+        <button id="searchButton">Search</button>
+        <div id="results"></div>
+    </div>
+
+    <div id="chatGPT" class="hidden">
+        <h2>ChatGPT with Voice Input</h2>
+        <button id="start-record-btn">Start Recording</button>
+        <button id="stop-record-btn">Stop Recording</button>
+        <p id="status">Click "Start Recording" to ask a question.</p>
+        <p><strong>Question:</strong> <span id="question"></span></p>
+        <p><strong>Response:</strong> <span id="response"></span></p>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('div[id]');
+            sections.forEach(section => {
+                section.classList.remove('active');
+                section.classList.add('hidden');
+            });
+
+            // Show the selected section
+            const activeSection = document.getElementById(sectionId);
+            activeSection.classList.remove('hidden');
+            activeSection.classList.add('active');
+        }
+
+        // Speech to Text
+        function startListening() {
+            const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            recognition.lang = 'en-US';
+            recognition.onstart = function() {
+                document.getElementById('result').innerText = "Listening...";
+            };
+            recognition.onspeechend = function() {
+                recognition.stop();
+                document.getElementById('result').innerText = "Stopped listening.";
+            };
+            recognition.onresult = function(event) {
+                const transcript = event.results[0][0].transcript;
+                document.getElementById('result').innerText = "You said: " + transcript;
+            };
+            recognition.onerror = function(event) {
+                document.getElementById('result').innerText = "Error: " + event.error;
+            };
+            recognition.start();
+        }
+
+        // Camera Photo Capture
+        const cameraVideo = document.getElementById('cameraVideo');
+        const snap = document.getElementById('snap');
+        const canvas = document.getElementById('canvas');
+        const context = canvas.getContext('2d');
+
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => {
+                cameraVideo.srcObject = stream;
+                cameraVideo.play();
+            })
+            .catch(err => {
+                console.error("Error accessing the camera: ", err);
+            });
+
+        snap.addEventListener('click', function() {
+            context.drawImage(cameraVideo, 0, 0, 640, 480);
+        });
+
+        // Live Camera Stream
+        const liveVideo = document.getElementById('liveVideo');
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => {
+                liveVideo.srcObject = stream;
+                liveVideo.play();
+            })
+            .catch(err => {
+                console.error("Error accessing the camera: ", err);
+            });
+
+        // Record Video
+        let mediaRecorder;
+        let recordedBlobs;
+        const recordVideo = document.getElementById('recordVideo');
+        const playback = document.getElementById('playback');
+        const startButton = document.getElementById('start');
+        const stopButton = document.getElementById('stop');
+
+        navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+            .then(stream => {
+                recordVideo.srcObject = stream;
+                mediaRecorder = new MediaRecorder(stream);
+                recordedBlobs = [];
+                mediaRecorder.ondataavailable = (event) => {
+                    if (event.data && event.data.size > 0) {
+                        recordedBlobs.push(event.data);
+                    }
+                };
+                mediaRecorder.onstop = () => {
+                    const superBuffer = new Blob(recordedBlobs, { type: 'video/webm' });
+                    playback.src = window.URL.createObjectURL(superBuffer);
+                };
+            })
+            .catch(err => {
+                console.error("Error accessing the camera: ", err);
+            });
+
+        startButton.addEventListener('click', () => {
+            mediaRecorder.start();
+            console.log("Recording started");
+        });
+
+        stopButton.addEventListener('click', () => {
+            mediaRecorder.stop();
+            console.log("Recording stopped");
+        });
+
+        // Search Engine
+        const searchButton = document.getElementById('searchButton');
+        searchButton.addEventListener('click', () => {
+            const query = document.getElementById('searchQuery').value;
+            const results = document.getElementById('results');
+            results.innerHTML = ''; // Clear previous results
+
+            // Dummy search results for demonstration
+            if (query) {
+                results.innerHTML = `
+                    <a href="#">Result 1 for "${query}"</a><br>
+                    <a href="#">Result 2 for "${query}"</a><br>
+                    <a href="#">Result 3 for "${query}"</a>
+                `;
+            } else {
+                results.innerHTML = 'Please enter a search term.';
+            }
+        });
+
+        // ChatGPT with Voice Input
+        const startRecordBtn = document.getElementById('start-record-btn');
+        const stopRecordBtn = document.getElementById('stop-record-btn');
+        const statusElem = document.getElementById('status');
+        const questionElem = document.getElementById('question');
+        const responseElem = document.getElementById('response');
+
+        // Placeholder functions for ChatGPT integration
+        function simulateChatGPTResponse(question) {
+            return `This is a simulated response for "${question}".`;
+        }
+
+        function handleVoiceInput() {
+            const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            recognition.lang = 'en-US';
+            recognition.onresult = function(event) {
+                const question = event.results[0][0].transcript;
+                questionElem.innerText = question;
+                const response = simulateChatGPTResponse(question);
+                responseElem.innerText = response;
+            };
+            recognition.onerror = function(event) {
+                statusElem.innerText = "Error: " + event.error;
+            };
+            recognition.start();
+        }
+
+        startRecordBtn.addEventListener('click', () => {
+            statusElem.innerText = 'Listening...';
+            handleVoiceInput();
+        });
+
+        stopRecordBtn.addEventListener('click', () => {
+            statusElem.innerText = 'Stopped listening.';
+        });
+    </script>
+</body>
+</html>
