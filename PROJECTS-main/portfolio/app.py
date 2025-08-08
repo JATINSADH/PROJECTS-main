@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, redirect, flash, url_for,send
 from pyapp.send_email_route import send_email_route
 from pyapp.scrape_google_route import scrape_google_route
 from pyapp.text_to_speech_route import text_to_speech_route
-from pyapp.control_volume_route import control_volume_route
 from pyapp.find_geo_location_route import find_geo_location_route
 from pyapp.send_bulk_email_route import send_bulk_email_route
 from pyapp.send_sms_route import send_sms_route
@@ -63,13 +62,6 @@ def text_to_speech():
     return text_to_speech_route()
 
 
-@app.route('/control_volume', methods=['GET'])  
-def control_volume_page():  
-    return render_template('control_volume.html')
-
-@app.route('/control_volume', methods=['POST'])
-def control_volume():
-    return control_volume_route()
 
 
 @app.route('/find_geo_location', methods=['GET'])  
