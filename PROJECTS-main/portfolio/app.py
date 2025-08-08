@@ -4,7 +4,6 @@ from pyapp.scrape_google_route import scrape_google_route
 from pyapp.text_to_speech_route import text_to_speech_route
 from pyapp.find_geo_location_route import find_geo_location_route
 from pyapp.send_bulk_email_route import send_bulk_email_route
-from pyapp.send_sms_route import send_sms_route
 from pyapp.resume import download_resume
 
 
@@ -81,14 +80,7 @@ def send_bulk_email_page():
 def send_bulk_email(): 
     return send_bulk_email_route()
 
-    
-@app.route('/send_sms', methods=['GET'])  
-def send_sms_page():  
-    return render_template('send_sms.html')
 
-@app.route('/send_sms', methods=['POST'])
-def send_sms():
-    return send_sms_route()
 
 @app.route('/send_sms_from_mobile', methods=['GET'])  
 def send_sms_from_mobile_page():  
